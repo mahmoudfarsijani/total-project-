@@ -14,6 +14,7 @@ const app = createApp(App);
 
 Router.beforeEach((to, from, next) => {
   const isAuthenticat = false;
+  // const statusUser = 'gaust'
   if (to.params.id) {
     document.title = `${to.meta.title} - ${to.params.id}`;
   } else {

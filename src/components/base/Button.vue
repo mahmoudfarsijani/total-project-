@@ -1,7 +1,8 @@
 <template>
     <component :is="tag" :class="['button',`button--${isIconOnly ? 'rounded' : 'default'}`]">
+        <Icon v-if="isLeft" :name="icon"/>
         <slot v-if="!isIconOnly"/>
-        <Icon v-if="icon" :name="icon"/>
+        <Icon v-if="icon && !isLeft" :name="icon"/>
     </component>
 </template>
 
@@ -13,7 +14,8 @@
     defineProps({
         tag: oneOf(['button','a','span','RouterLink']).def('button'),
         isIconOnly: bool().def(false),
-        icon: string()
+        icon: string(),
+        isLeft:bool().def(false)
     })
 </script>
 

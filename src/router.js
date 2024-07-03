@@ -56,40 +56,62 @@ export default createRouter({
       meta: { title: "Weather", requiresAuth: false },
     },
     {
-      name:'movies',
-      path:'/movies',
-      component:import('@/pages/movies/IndexMovies.vue'),
-      meta:{title:'movies',requiresAuth:false}
+      name: "movies",
+      path: "/movies",
+      component: import("@/pages/movies/IndexMovies.vue"),
+      meta: { title: "movies", requiresAuth: false },
     },
     {
-      name:'detail-movies',
-      path:'/movies/:id',
-      component:import('@/pages/movies/detail/DetailMovie.vue'),
-      meta:{title:'movies-detail',requiresAuth:false}
+      name: "detail-movies",
+      path: "/movies/:id",
+      component: import("@/pages/movies/detail/DetailMovie.vue"),
+      meta: { title: "movies-detail", requiresAuth: false },
     },
     {
-      name:'fav-movies',
-      path:'/fav-movies',
-      component:import('@/pages/movies/FavMovies.vue'),
-      meta:{title:'fav-movies',requiresAuth:false}
+      name: "fav-movies",
+      path: "/fav-movies",
+      component: import("@/pages/movies/FavMovies.vue"),
+      meta: { title: "fav-movies", requiresAuth: false },
     },
     {
-      name:'logout',
-      path:'/logout',
-      component:import('@/pages/CreateAccount.vue'),
-      meta:{title:'create-account',requiresAuth:false}
+      name: "logout",
+      path: "/logout",
+      component: import("@/pages/CreateAccount.vue"),
+      meta: { title: "create-account", requiresAuth: false },
     },
     {
       name: "login",
       path: "/login",
       component: import("@/pages/Login.vue"),
-      meta: { title: "Login" ,requiresAuth:false },
+      meta: { title: "Login", requiresAuth: false },
     },
     {
       name: "dashboard",
       path: "/dashboard",
-      component: import("@/pages/dashboard/maste/dashboard.vue"),
-      meta: { title: "Dashboard" ,requiresAuth:false },
+      component: import("@/pages/dashboard/DashboardPanel.vue"),
+      meta: { title: "Dashboard", requiresAuth: false },
+      children: [
+        {
+          name: "home-dashboard",
+          path: "/dashboard/home",
+          component: import("@/pages/dashboard/child/Home.vue"),
+        },
+        {
+          name: "message-dashboard",
+          path: "/dashboard/message",
+          component: import("@/pages/dashboard/child/Message.vue"),
+        },
+        {
+          name: "chart-dashboard",
+          path: "/dashboard/chart",
+          component: import("@/pages/dashboard/child/Chart.vue"),
+        },
+        {
+          name: "setting-dashboard",
+          path: "/dashboard/setting",
+          component: import("@/pages/dashboard/child/Setting.vue"),
+        },
+      ],
     },
   ],
 });
