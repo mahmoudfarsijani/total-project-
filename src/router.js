@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-export default createRouter({
+
+export default  createRouter({
   history: createWebHistory(),
   routes: [
     {
@@ -89,7 +90,7 @@ export default createRouter({
       name: "dashboard",
       path: "/dashboard",
       component: import("@/pages/dashboard/DashboardPanel.vue"),
-      meta: { title: "Dashboard", requiresAuth: false },
+      meta: { title: "Dashboard", requiresAuth: true },
       children: [
         {
           name: "home-dashboard",
@@ -115,3 +116,4 @@ export default createRouter({
     },
   ],
 });
+

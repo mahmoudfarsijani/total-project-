@@ -18,9 +18,11 @@
           :to="{ name: 'basket' }"
           class="gap-[5px]"
         >
+        {{ dataLength.getLength }}
         </Button>
       </div>
       <div>
+        {{ basketIds }}
         <h1 class="title text-[35px] capitalize">basket</h1>
         <span
           v-if="isLoading"
@@ -33,10 +35,9 @@
         <div v-else>
           <Row tag="ul" :is-row="true" :is-wrap="true" class="justify-between">
             <CardProd
-              v-for="(item, index) in findProduct"
+              v-for="(item, index) in basket"
               :key="index"
               :product="item"
-              :remove-basket="removeBasket"
             />
           </Row>
         </div>
@@ -73,23 +74,38 @@ const goBack = () => {
 //store ---- add basket
 const { removeBasket } = useBasket();
 const basket = computed(() => useBasket().basket);
+const dataLength = useBasket()
+
 
 
 
 
 
 //find id in basket
-const basketIds = computed(() => {
-  return basket.value.map((item) => item.id);
-});
+// const basketIds = computed(() => {
+//   return basket.value.map((item) => item.id);
+// });
 
 //find --- product
-const findProduct = computed(() => {
-  if (data.value) {
-    return data.value.filter((item) => basketIds.value.includes(item.id));
-  }
-  return "No Data!";
-});
+// const findProduct = computed(() => {
+//   if (data.value) {
+//     return data.value.filter((item) => basket.value.includes(item.id));
+//   }
+//   return "No Data!";
+// });
+
+const getPrice = (price) => {
+  return isNaN(price) ? 0 : price
+};
+
+
+// const totalPrice = computed(() => {
+//   return basket.value.reduce((total,item) => {
+//     total + getPrice(item.price),0
+//   })
+// })
+
+// console.log(totalPrice);
 
  
 

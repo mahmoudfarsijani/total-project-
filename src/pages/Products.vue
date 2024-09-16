@@ -18,6 +18,7 @@
           :to="{ name: 'basket' }"
           class="gap-[5px]"
         >
+        {{ dataLength.getLength }}
         </Button>
       </div>
       <div class="pt-[25px]">
@@ -114,5 +115,19 @@ const filterProduct = computed(() => {
   }
 });
 
-console.log(data);
+
+const getValidPrice = (price) => {
+  return isNaN(price) ? 0 : price
+}
+// const totalPrice = computed(() => {
+//   return basket.value.reduce((total,item) => 
+//    total + getValidPrice(item.price),0
+//   )
+// })
+
+const dataLength = useBasket();
+
+
+
+
 </script>

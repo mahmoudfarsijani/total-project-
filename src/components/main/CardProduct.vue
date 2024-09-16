@@ -51,6 +51,7 @@ import Img from "@/components/base/Img.vue";
 import Button from "@/components/base/Button.vue";
 import {useBasket} from '@/stores/useBasket.js'
 
+const {removeBasket,addBasket} = useBasket()
 
 const props = defineProps({
   product: shape({
@@ -65,8 +66,8 @@ const props = defineProps({
       count: number(),
     }),
   }),
-  addBasket: func().isRequired,
-  removeBasket: func().isRequired,
+  // addBasket: func().isRequired,
+  // removeBasket: func().isRequired,
 });
 
 const basket = computed(() => useBasket().basket)

@@ -50,13 +50,17 @@ import { ref, defineEmits } from "vue";
 import { Field, Form, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 import { useRouter } from "vue-router";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// import {useAuth} from '@/composables/useAuth.js'
+
 import Cookie from "js-cookie";
 
 const email = ref("");
 const password = ref("");
 const isRemember = ref(false);
 const router = useRouter();
+// const {login} = useAuth();
+import { auth } from '@/plugins/firebase.js';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const schema = yup.object({
   email: yup.string().email().required(),
@@ -69,10 +73,10 @@ const goLogout = () => {
   });
 };
 
-const auth = getAuth();
 const formHandler = async () => {
   try {
     await signInWithEmailAndPassword(auth, email.value, password.value);
+    // await login(email.value,password.value)
     if (isRemember.value) {
       Cookie.set("RememberMe", email.value, { expires: 7 });
     }
